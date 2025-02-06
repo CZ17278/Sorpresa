@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>¡San Valentín!</title>
+    <style>
+        body {
+            background: #ff99cc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #corazon {
+            font-size: 100px;
+            margin-top: 50px;
+            animation: latido 1s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        #mensaje {
+            font-size: 24px;
+            color: #cc0066;
+            text-align: center;
+            margin: 20px;
+            opacity: 0;
+            animation: aparecer 2s forwards;
+            animation-delay: 2s;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .botones {
+            display: none;
+            animation: aparecer 1s forwards;
+        }
+
+        button {
+            font-size: 20px;
+            margin: 10px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #si {
+            background: #00cc66;
+            color: white;
+        }
+
+        #no {
+            background: #ff4444;
+            color: white;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="corazon">❤️</div>
+    <div id="mensaje">
+        <h2>¡Hola mi albita, mi colibri, mi doctorita, mi amor!</h2>
+        <p>¿Quieres ser mi San Valentín?</p>
+    </div>
+    <div class="botones">
+        <button id="si">¡Sí! 😍</button>
+        <button id="no">No 😢</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.botones').style.display = 'block';
+            }, 4000);
+
+            document.getElementById('si').addEventListener('click', () => {
+                document.body.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h1 style="color: #cc0066; font-size: 40px;">¡Eres la mejor mi amor! 💖</h1>
+                        <p style="font-size: 24px;">Te amo más que a nada en este mundo 😘</p>
+                        <div style="font-size: 60px;">🎉💐🍫💌</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('no').addEventListener('mouseover', () => {
+                const noBtn = document.getElementById('no');
+                const x = Math.random() * (window.innerWidth - 100);
+                const y = Math.random() * (window.innerHeight - 50);
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = x + 'px';
+                noBtn.style.top = y + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
